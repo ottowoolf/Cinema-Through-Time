@@ -1,27 +1,60 @@
-async function getData() {
-  const url = "https://api.collection.nfsa.gov.au/search?query=dog";
+// Function to fetch data from NFSA API
+async function getData(url) {
   try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
+      // Fetch data from NFSA API
+      const response = await fetch(url);
 
-    const data = await response.json();
-    console.log(data);
+      // Convert response to JSON
+      const data = await response.json();
 
-    let item = data.results[0];
+      // Log the full response to inspect structure
+      console.log("Full API Response:", data);
 
-   // 1. create a container
-const itemContainer = document.createElement('div');
-    
-// 2. use template literals to easily embed the data in the string
-itemContainer.innerHTML = `<h2>${item.title}</h2><p>${item.name}</p>`;
-
-// 3. append to the page
-objectsContainer.appendChild(itemContainer);
-
+      // Call function to display results
+      displayResults(data.results);
   } catch (error) {
-    console.error(error.message);
+      console.error("Error fetching data:", error);
+      document.getElementById("objectsContainer").innerHTML = `<p>Error fetching data. Please try again later.</p>`;
   }
 }
-getData();
+
+// Function to display API results
+function displayResults(results) {
+  const objectsContainer = document.getElementById("objectsContainer"); // Ensure this exists in HTML
+
+  results.forEach(item => {
+      console.log("Item:", item); // Step to log each item
+
+      // Extract the preview array
+      const imgArr = item.preview || []; // Default to empty array
+
+      // Initialize empty image URL
+      let imgurl = "";
+
+      // Loop through the preview array to find an image
+      const baseurl = "https://media.nfsacollection.net/";
+      for (let i = 0; i < imgArr.length; i++) {
+          console.log("Preview object:", imgArr[i]); // Log preview object
+          if (imgArr[i].hasOwnProperty("filePath")) {
+              imgurl = baseurl + imgArr[i].filePath;
+              break; // Use the first valid image
+          }
+      }
+
+      // 1. Create a container for the item
+      const itemContainer = document.createElement("div");
+
+      // 2. Use template literals to embed the item details in HTML
+      itemContainer.innerHTML = `
+          <h2>${item.title}</h2>
+          <p>${item.name}</p>
+          ${imgurl ? `<div class="imgContainer"><img src="${imgurl}" alt="${item.title}"></div>` : ""}
+      `;
+
+      // 3. Append the item container to the objects container
+      objectsContainer.appendChild(itemContainer);
+  });
+}
+
+// Call getData with NFSA API URL
+getData("https://api.collection.nfsa.gov.au/search?query=dog");
