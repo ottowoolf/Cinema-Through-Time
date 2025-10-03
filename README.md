@@ -2,7 +2,7 @@
 
 An informational website to explore data from the NFSA API (University Project)
 
-## Link to Working Web Application
+### Link to Working Web Application
 
 https://ottowoolf.github.io/Cinema-Through-Time/
 
