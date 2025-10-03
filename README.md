@@ -6,6 +6,8 @@ An informational website to explore data from the NFSA API (University Project)
 
 https://ottowoolf.github.io/Cinema-Through-Time/
 
+#### StudentID: u3293800
+
 ### Introduction
 
 A single-page web app designed for users to explore Australian cinema across different decades. Building on my prototype from assessment 1, the implementation displays dynamic data from the NFSA API.
