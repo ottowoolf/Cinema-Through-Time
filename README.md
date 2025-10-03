@@ -24,7 +24,8 @@ While CSS media queries were my first approach to a fully responsive website, I 
 
 Data retrieval via the NFSA API was implemented using asynchronous fetch requests, including error handling. Decade buttons trigger API calls filtered by year ranges from the array of results, while the carousel maintains a scrollable view with left and right buttons for navigation. The “Surprise Me” feature selects a random movie from the array results, dynamically generating a card with a random background colour to replace missing imagery.
 
-##Challenges
+### Challenges
+
 One technical challenge or limitation I faced was that the API did not provide images for many results nor many decades to choose from, so I implemented a random colour system to resolve the first issue, which at the same time adds visual differentiation and a little bit of colour to the website, following the recommendation and feedback from Riley.
 
 For development efficiency, I relied on AI tools to discuss code approaches, explore alternatives, and understand concepts, allowing me to test a live-prototyping workflow that could be applied to client projects.
