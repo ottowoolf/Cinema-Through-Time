@@ -1,15 +1,113 @@
-@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
 
-body {
-  margin: 24px;
-  padding: 24px;
-}
+      :root {
+        --primary-color: #0d6efd;
+        --spacing: 24px;
+        --card-width: 24rem;
+        --transition-speed: 0.3s;
+      }
 
-#objectsContainer {
-font-family: Figtree, sans-serif;
-  gap: 16px;
-}
+      body {
+        font-family: Figtree, sans-serif;
+      }
 
-#surpriseContainer {
-  font-family: Figtree, sans-serif;
-}
+      /* Page Navigation */
+      .page {
+        display: none;
+      }
+
+      .page.active {
+        display: block;
+      }
+
+      /* Carousel Styles */
+      .carousel-container {
+        position: relative;
+        overflow: hidden;
+        display: flex;
+      justify-content: center;
+      }
+
+      .carousel-track {
+        display: flex;
+        gap: 16px;
+        transition: transform var(--transition-speed) ease;
+      }
+
+      .carousel-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10;
+        font-size: 24px;
+      }
+
+      .carousel-btn:hover {
+        background: rgba(0, 0, 0, 0.8);
+      }
+
+      .carousel-btn-left {
+        left: 10px;
+      }
+
+      .carousel-btn-right {
+        right: 10px;
+      }
+
+      /* Decade Buttons */
+      .decade-btn-active {
+        background-color: var(--primary-color) !important;
+        color: white !important;
+      }
+
+      /* Movie Cards */
+      .movie-card {
+        width: var(--card-width);
+        flex-shrink: 0;
+      }
+
+      /* Movie Detail Page */
+      .movie-detail-page {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .movie-detail-hero {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 30px;
+      }
+
+      .detail-section {
+        margin-bottom: 25px;
+      }
+
+      .detail-section h6 {
+        font-weight: bold;
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #495057;
+        margin-bottom: 10px;
+      }
+
+      .detail-section p {
+        font-size: 16px;
+        line-height: 1.6;
+      }
+
+      .loading {
+        text-align: center;
+        padding: 40px;
+        font-size: 18px;
+        color: #6c757d;
+      }
